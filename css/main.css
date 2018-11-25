@@ -1,0 +1,212 @@
+body{
+	background-color: #61B7D2;
+	background-image: url(../img/background.jpg) ;
+  	background-size: 100%; 
+	background-repeat: no-repeat;
+}
+/*   ПОПУЛЯРНЫЕ НАПРАВЛЕНИЕ  */
+.gray-background {
+    position: relative;
+    background-color: #2A7792;
+    width: 100%;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.head-line{
+	background-color: #0F5488;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #2f4f4f;
+	color: #FAFFBD;
+	padding: 11px;
+	margin: 0 0px 7px 0px;
+	box-shadow: 0 3px 2px 0px #464545;
+	z-index: 1;
+    position: relative;
+    width: 100%;
+}
+.cities {/*
+    display: flex;*/
+    justify-content: space-between;
+}
+.cities-wrapper {
+    position: relative;
+    margin-left:15px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 250px;
+    height: 225px;
+    transition: 0.5s;
+    /*box-shadow: 0 0.1875rem 2rem #000000bd;*/
+}
+.cities-container {
+    width: 250px;
+    height: 225px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+    /* display: inline; */
+}
+.city-name-from {
+    top: 5px;
+    left: 5px;
+}
+.city-name-from, .city-name-to {
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+}
+.city-name-to {
+    bottom: 5px;
+    right: 5px;
+}
+@media (max-width: 900px)
+.cities {
+    display: inline-block !important;
+    text-align: center;
+}
+.city {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.city.diagonal {
+    transform: skew(131.86503deg);
+    border-left: 1px solid white;
+}
+
+.city.diagonal img {
+    transform: skew(-131.86503deg);
+}
+.city img {
+    backface-visibility: hidden;
+    width: 250px;
+    height: 225px;
+}
+.city.diagonal {
+    transform: skew(131.86503deg);
+    border-left: 1px solid white;
+}
+.city.diagonal, .city.diagonal img {
+    transform-origin: 0 100%;
+    transition: all 350ms cubic-bezier(0.225,0.5,0.165,1);
+}
+.city-overlay {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    transition: 1s;
+    cursor: pointer;
+}
+@keyframes circl{
+			0%{transform: rotate(0deg);}
+			35%{transform: rotate(-10deg);}
+			70%{transform: rotate(10deg);}
+			100%{transform: rotate(0deg);}
+			}
+.cities-wrapper:hover {
+	/*width: 150px;
+	height: 200px;*/
+	animation: circl 2s infinite ease-in-out;
+    box-shadow: 0 0.1875rem 2rem 1px #000;
+}
+
+/*    -----------------------    */
+
+
+
+/*    Новости      */
+
+#widget-content-RazletPostBundle-User-list {
+    width: 100%;
+    min-height: 350px;
+}
+#line-of-post {
+    clear: both;
+    width: 100%;
+}
+
+
+/*    Пред последний    */
+.white-background {
+    position: relative;
+    /*background-image: url(../img/background-white.png);*/
+    background-color: #81C5DB;
+    width: 100%;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+#widget-footer-main-RazletStructureBundle-User-index {
+    font-size: small;
+    color: #0c4f8c;
+}
+p {
+    margin: 0 0 10px;
+}
+#widget-footer-main-RazletStructureBundle-User-index h2 {
+    font-size: 1.5em;
+}
+#widget-footer-main-RazletStructureBundle-User-index h3 {
+    font-size: 1.2em;
+}
+
+
+/*   Posledniy */
+
+#footer {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    background: url(../img/could_footer.png) no-repeat 50% 0;
+    height: 313px;
+    padding-left: 10px;
+    bottom: 0px;
+    color: #0c4f8c;
+    background-position-x: 50%;
+}
+#footer-container {
+    max-width: 1600px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    height: 313px;
+}
+#widget-footer-RazletStructureBundle-User-index {
+    width: 90%;
+    position: absolute;
+    bottom: 0px;
+    margin: auto;
+}
+#footer-line-settings {
+    height: 7px;
+    position: relative;
+    left: -10px;
+}
+#widget-footer-RazletStructureBundle-User-index table {
+    width: 80%;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    vertical-align: middle;
+}
+#year{
+	margin-left: 10px;
+	color: #FF0000;
+}
+#footer{
+    color: #FAFFBD; 
+    font-size: 20px;
+}

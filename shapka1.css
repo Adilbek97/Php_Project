@@ -1,0 +1,139 @@
+.container{
+
+margin-top: 10px;
+
+}
+.head{
+
+border:1px solid black;
+
+height: 151px;	
+}
+body{
+
+    background:url(img/background.jpg); 
+     background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
+}
+.row .auth_links a{
+	
+	color: #1F1F1F;
+font-size: 1.5em;
+    margin-left: 20px;
+    text-shadow: 0 0 3px #3293B6;
+    transition: 0.2s all;
+}
+.row .auth_links a:hover{
+
+	text-decoration: none;
+	color: white;
+
+}
+.poisk{
+background: rgba(0,0,0,.8);
+width: 50px;
+
+}
+
+/*poisk*/
+.gray-background{
+    position: relative;
+    background: rgba(0,50,70,0.7);
+    width: 100%;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+#search-tickets,#search-ticket{
+    width:100%;
+    position: relative;
+    background-color: #0F5488;
+    width: 100%;
+    border-radius: 5px;
+    padding: 20px;
+
+    margin-bottom: 30px;
+}
+#search-tickets{
+
+    z-index: 2;
+
+    box-shadow: 0 3px 2px -1px #464545;
+    border-radius: 0;
+    margin-bottom: 0px;
+}
+#search-tickets-id{
+    font-size: 1.5em;
+    font-weight: bold;
+    color:white;
+    text-shadow: 1px 1px 1px darkslategray;
+    color:#FAFFBD;
+}
+#form_for_finding {
+    position: relative;
+
+}
+#form_finding {
+    font-size: 14px;
+    position: relative;
+    color: #fff;
+}
+form{
+    display: block;
+    margin-top: 0em;
+}
+#affiliator-form-ow, #affiliator-form-rt {
+    width: 49%;
+    display: inline-block;
+}
+#affiliator-form-ow, #affiliator-form-rt {
+    display: none;
+}
+input[type="checkbox"], input[type="radio"] {
+    width: auto;
+}
+#form_finding label {
+    display: inline-block;
+}
+label {
+    font-weight: normal;
+}
+#affiliator-form-ow, #affiliator-form-rt {
+    width: 49%;
+    display: inline-block;
+}
+#affiliator-form-ow, #affiliator-form-rt {
+    display: none;
+}
+input[type="checkbox"], input[type="radio"] {
+    width: auto;
+}
+#form_finding label {
+    display: inline-block;
+}
+label {
+    font-weight: normal;
+}
+#form_for_finding {
+    position: relative;
+}
+#body-form-finding, #form_finding {
+}
+#form_finding {
+    font-size: 14px;
+    position: relative;
+    color: #fff;
+}
+#affiliator-form-ow, #affiliator-form-rt {
+    display: none;
+}
+#affiliator-form-ow, #affiliator-form-rt {
+    width: 49%;
+    display: inline-block;
+}
+a{
+    style="color: #FAFFBD; font-size: 20px;
+}
