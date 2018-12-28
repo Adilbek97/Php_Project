@@ -1,6 +1,5 @@
 var visible=true;
 function onHide(){
-		
 		if(visible){
 		 $('#ticket').hide();
 		}else{

@@ -1,7 +1,5 @@
 .container{
-
 margin-top: 10px;
-
 }
 .head{
 
@@ -26,10 +24,8 @@ font-size: 1.5em;
     transition: 0.2s all;
 }
 .row .auth_links a:hover{
-
 	text-decoration: none;
 	color: white;
-
 }
 .poisk{
 background: rgba(0,0,0,.8);
