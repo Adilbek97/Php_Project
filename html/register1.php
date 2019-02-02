@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,6 +16,8 @@
     <script type="text/javascript" src="libs/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="libs/bootstrap-datepicker.css">
     <script type="text/javascript" src="shapka1.js"></script>
+    <script type="text/javascript" src="../js/payTicket.js" ></script>
+    
     <!-- Bootstrap  -->
 
     <!-- for date -->
@@ -53,17 +58,18 @@
       </div>
     </div>
     <div class="col-lg-6   offset-lg-1" >
-      <form class="form-inline">
+      <form class="form-inline" action="../index1.php" id="login_div" method="POST">
         <div class="form-group">
           <label class="sr-only" for="exampleInputEmail3">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+          <input type="email" class="form-control" name="mail" id="exampleInputEmail3" placeholder="Email">
         </div>
         <div class="form-group">
           <label class="sr-only" for="exampleInputPassword3">Passworiiiicdin[ojsfN;GK FAd</label>
-          <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+          <input type="password" name="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-primary">Вход</button>
+        <button type="submit" name="into" class="btn btn-primary">Вход</button>
       </form>
+      <div id="out_link"></div>
       <div class="auth_links">
         <a href="#">Регистрация</a>
         <a href="#">Забыли пароль?</a>
@@ -82,13 +88,13 @@
         
         <ul class="nav navbar-nav" >
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color: #FAFFBD; font-size: 20px;" >Информация<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#"  style="color: #FAFFBD; font-size: 20px;" >Информация<span class="sr-only">(current)</span></a>
             </li>     
             <li class="nav-item">
              <a class="nav-link" href="#" style="color: #FAFFBD; font-size: 20px;">Клиентам</a>
             </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color: #FAFFBD; font-size: 20px;">Купить билет</a>
+            <a class="nav-link" id="pay_ticket" href="#" onclick="return onHide()" style="color: #FAFFBD; font-size: 20px;">Купить билет</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" style="color: #FAFFBD; font-size: 20px;">О нас</a>
@@ -96,100 +102,110 @@
         </ul>
       </div>
     </nav>
-  
-
 <br>
   
- <div class="gray-background">
-  <div id="search-tickets-id">ПОИСК ДЕШЕВЫХ БИЛЕТОВ</div>
-  <br>
-  <div class="container">
-    <form id="contact-form" method="post" action="contact.php" role="form">
-      <div class="messages"></div>
-      <div class="controls">
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="form-group">
-              <input id="form_name" type="text" name="surname" class="form-control" placeholder="Откуда" required="required" data-error="name is required.">
-              <div class="help-block with-errors"></div>
-            </div>
-          </div>
-          <div class="col-sm-1">
-            <div class="form-group">
-               <input type="button" class="btn" id="button_1" value="⇄" style="background-color: #FF4500; color: #FAFFBD; " onclick="alert("Hello")">
-              <div class="help-block with-errors"></div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="form-group">
-              <input id="form_name2" type="text" name="text" class="form-control" placeholder="Куда" required="required" data-error="Valid email is required.">
-              <div class="help-block with-errors"></div>
-            </div>
-          </div>
-           <div class="col-sm-5">
-            <div class="form-group">
-
-              <input id="form_name" type="text" name="surname" class="form-control" placeholder="1,пасажир,бизнес класс" required="required" data-error="name is required.">
-              <div class="help-block with-errors"></div>
-            </div>
-          </div>
-        </div>
-         <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <div class="dates">
-              <label for="form_phone" style="color: #FAFFBD; font-size: 20px;">Туда</label>
-              <input id="form_phone" type="text" name="phone" class="form-control" placeholder="Выберите дату" autocomplete="off">
-              <div class="help-block with-errors"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <div class="dates">
-              <label for="form_phone" style="color: #FAFFBD; font-size: 20px;"><input type="checkbox" name="">  Обратно</label>
-              <input id="form_phone" type="text" name="phone" class="form-control" placeholder="Выберите дату">
-              <div class="help-block with-errors"></div>
-             </div>
-             </div>
-            </div>
-            
-          </div>
-         </div>
-        <div class="clearfix"></div>
-     </form>
-     <br>
-     <div class="row">
-       <div class="col-md-3 offset-md-10"> <button class="btn" style="background-color: #FF4500; color: #FAFFBD; ">Найти рейс</button></div>
-     </div>
-   
-   </div>
-</div>
-
 <div class="container blue_background">
       <div class="white_background container">
         <div class="container ">
-          <form class="clform" action="reg1.php" method="POST">
+          <form class="clform" action="register1.php" method="POST">
               <div class="textTitle"><h2>Данные пользователя</h2></div>
+
+              <?php
+$data = $_POST;
+if (isset($data['btnCreate'])) {
+   $errors = array();
+  // s
+  if( trim($data['mail'])==''){
+      $errors[]='Введите логин';
+   }
+  if( trim($data['lastName'])==''){
+      $errors[]='Введите фамилия';
+   }
+ if( trim($data['firstName'])==''){
+    $errors[]='Введите имя';
+ }
+ if( trim($data['thirdName'])==''){
+      $errors[]='Введите отчество';
+   }
+if( trim($data['birthDay'])==''){
+      $errors[]='Введите день рождения';
+   }
+if( trim($data['jyn'])==''){
+      $errors[]='Выберите пол';
+   }
+if( trim($data['phoneNum'])==''){
+      $errors[]='Введите телефон';
+   }
+ if( trim($data['password'])==''){
+    $errors[]='Введите пароль';
+ }
+  if( $data['password'] != $data['password2']){
+      $errors[]='Повторный пароль введён не верно!';
+   }
+  if ( empty($errors)) {
+    //its all ok we can register
+
+        //    registr
+            $name = $data['firstName'];
+            $lastName= $data['lastName'];
+            $thirdName= $data['thirdName'];
+            $birthDay= $data['birthDay'];
+            $jyn= $data['jyn'];
+            $phone= $data['phoneNum'];
+            $password1= $data['password'];
+            $mail= $data['mail'];
+              require_once '../db/connection.php';
+              $link = mysqli_connect($host, $user, $password, $database) 
+                or die("Ошибка " . mysqli_error($link));
+                $query_mail ="SELECT password FROM users WHERE mail='$mail'";
+                             $result_mail = mysqli_query($link, $query_mail) or die("Ошибка " . mysqli_error($link));
+                              if($result_mail)
+                              {
+                                  $rows = mysqli_num_rows($result_mail); // количество полученных строк
+                                  // setcookie("mail","0");
+                                  if($rows==0){
+                                      $query ="INSERT INTO users VALUES (NULL, '$lastName', '$name', '$thirdName', '$birthDay', '$jyn', '$phone', '$mail', '$password1')";
+                              $result = mysqli_query($link, $query) or die("Oshibka " . mysqli_error($link)); 
+                             if($result)
+                              {
+                                  echo "<span style='color:blue;'>Вы усшешно зарегистрировались.</span>";
+                                  header("Location: ../php_src/succesRegistered.php");
+                              }
+                                  }else{
+                                    // print("takoi mail uje est".$_SESSION['mail_exist']);
+                                    echo '<div style="color: yellow;">'."Такой Mail уже есть!".'</div><hr>';
+                                  }
+                                  mysqli_free_result($result_mail);
+                              }
+            mysqli_close($link);
+      // register
+  }else{
+    echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+  }
+
+}
+
+
+?>
                <div class="form-group">
                 <label for="email">Email* </label>
-                <input type="email" class="form-control" id="email" name="mail">
+                <input type="email" class="form-control" id="email" name="mail" value="<?php echo @$data['mail'];?>">
               </div>
               <div class="form-group">
                 <label >Фамилия*</label>
-                <input type="text" class="form-control" id="lastName" name="lastName">
+                <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo @$data['lastName'];?>">
               </div>
               <div class="form-group">
                 <label for="email">Имя*</label>
-                <input type="text" class="form-control" id="firstName" name="firstName">
+                <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo @$data['firstName'];?>" >
               </div>
               <div class="form-group">
                 <label >Отчество*</label>
-                <input type="text" class="form-control" id="" name="thirdName">
+                <input type="text" class="form-control" id="" name="thirdName" value="<?php echo @$data['thirdName'];?>">
               </div>
               <div class="form-group">
                 <label for="date">День рождения*</label>
-                <input type="date" class="form-control" name="birthDay">
+                <input type="date" class="form-control" name="birthDay" value="<?php echo @$data['birthDay'];?>">
               </div>
               <div class="form-group">
                 <input type="radio" name="jyn" value="e" > Муж<br>
@@ -198,7 +214,7 @@
               <div class="form-group">
                 <label for="phone">Телефон*</label>
                 <!-- <input type="text" class="form-control" placeholder="код страны"> -->
-                <input type="text" class="form-control" placeholder="телефон" name="phoneNum">
+                <input type="text" class="form-control" placeholder="телефон" name="phoneNum" value="<?php echo @$data['phoneNum'];?>">
               </div>
               <hr>
               <div class="textTitle"><h2>Пароль</h2></div>
@@ -208,10 +224,10 @@
               </div>
               <div class="form-group">
                 <label for="pwd" >Потверждение пароля</label>
-                <input type="password" class="form-control" id="">
+                <input type="password" class="form-control" id="" name="password2">
               </div>
               <div class="btn">
-                <button type="submit" class="btn btn-success">Создат пользователя</button>
+                <button type="submit" name="btnCreate" class="btn btn-success">Создат пользователя</button>
               </div>
             </form>
         </div>
@@ -253,7 +269,9 @@
   <!-- footer -->
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
- --><script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+ -->
+<script type="text/javascript" src="../js/hideLoginForm.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
 </body>
 </html>
